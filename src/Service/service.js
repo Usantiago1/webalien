@@ -10,7 +10,7 @@ export async function saveUser(userData){
             method:'POST',
             data:userData
         })
-    } catch (error) {
+    } catch (error) {                
         console.log(error);
     }
 }
