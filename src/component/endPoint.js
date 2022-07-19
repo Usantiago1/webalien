@@ -3,12 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 
 const EndPoint = () => {
-    const navigate = useNavigate();
 
 
-    const navigation = () =>{
-        navigate('/Registro');
-    }
+
 
 
     return (
@@ -18,7 +15,7 @@ const EndPoint = () => {
                     <div className="card-header">
                         <h1 className="text-center fst-italic">EndPoint</h1>
                     </div>
-                    <Button onClick={navigation} className="mt-5 center">EndPoint</Button>
+                    <Button  className="mt-5 center">EndPoint</Button>
                 </div>
 
             </div>
