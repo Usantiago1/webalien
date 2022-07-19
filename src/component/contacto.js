@@ -10,7 +10,7 @@ import { Calendar } from 'primereact/calendar'
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 
-const Registro = () => {
+const Contacto = () => {
 
     const [formData, setFormData] = useState({});
     const [showMessage, setShowMessage] = useState(false);
@@ -120,4 +120,4 @@ const Registro = () => {
         </>
     )
 }
-export default Registro;
+export default Contacto;
