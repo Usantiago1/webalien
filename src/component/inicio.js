@@ -3,6 +3,8 @@ import React from "react";
 import {Button} from 'primereact/button';
 import { useNavigate } from "react-router-dom";
 
+import Footer from "./footer";
+
 const Inicio = () => {
     return(
         <>
@@ -14,7 +16,7 @@ const Inicio = () => {
             </div>
 
         </div>
-        
+
         </>
     )
 }

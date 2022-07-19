@@ -10,6 +10,9 @@ import { Calendar } from 'primereact/calendar'
 import { Dialog } from 'primereact/dialog';
 import { Divider } from 'primereact/divider';
 
+
+import Footer from "./footer";
+
 const Contacto = () => {
 
     const [formData, setFormData] = useState({});
@@ -56,7 +59,7 @@ const Contacto = () => {
 
     return (
         <>
-            <div className="card">
+            <div className="card mb-5">
 
                 <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                     <div className="flex justify-content-center flex-column pt-6 px-3">
@@ -115,8 +118,10 @@ const Contacto = () => {
                         <Button label="Enviar" className="p-button-success p-button-text p-button-outlined" />
                     </form>
                 </div>
-
+               
             </div>
+
+<Footer></Footer>
         </>
     )
 }
