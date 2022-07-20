@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
-
+import Footer from "./footer";
 const EndPoint = () => {
 
 
@@ -15,10 +15,11 @@ const EndPoint = () => {
                     <div className="card-header">
                         <h1 className="text-center fst-italic">EndPoint</h1>
                     </div>
-                    <Button  className="mt-5 center">EndPoint</Button>
                 </div>
 
             </div>
+
+            <Footer></Footer>
         </>
     )
 }

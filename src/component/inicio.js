@@ -17,6 +17,8 @@ const Inicio = () => {
 
         </div>
 
+        <Footer></Footer>
+
         </>
     )
 }

@@ -59,7 +59,7 @@ const Contacto = () => {
 
     return (
         <>
-            <div className="card mb-5">
+            <div className="card">
 
                 <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                     <div className="flex justify-content-center flex-column pt-6 px-3">
@@ -105,23 +105,25 @@ const Contacto = () => {
                                 <div className="field mb-3 mt-4">
                                     <span className="p-float-label">
                                         <Controller name="asunto" control={control} rules={{ required: 'Este campo es requerido.' }} render={({ field, fieldState }) => (
-                                            <InputTextarea id={field.name} {...field} className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                            <InputTextarea id={field.name} {...field} className={classNames({ 'p-invalid': fieldState.error })} />
                                         )} />
                                         <label htmlFor="asunto" className={classNames({ ' p-error': errors.name })}>Asunto*</label>
                                     </span>
                                     {getFormErrorMessage('asunto')}
                                 </div>
                             </div>
+                        <Button  label="Enviar" className="p-button-raised p-button-success mb-3 " />
+
+
 
 
                         </div>
-                        <Button label="Enviar" className="p-button-success p-button-text p-button-outlined" />
                     </form>
                 </div>
                
             </div>
 
-<Footer></Footer>
+        <Footer/>
         </>
     )
 }

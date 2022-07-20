@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import {InputText} from 'primereact/inputtext';
+import { Button } from 'primereact/button';
 
 import {
     MDBFooter,
@@ -11,12 +12,27 @@ import {
     MDBRow
   } from 'mdb-react-ui-kit';
 
-
-
+import emailjs from "@emailjs/browser";
 
 
 
 const Footer = () =>{
+
+
+  const form = useRef();
+
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_p75gfbr','template_22q4sui',form.current,'jC5_W8QPWemHmQMrQ')
+    .then((result)=>{
+      console.log(result.text);
+    },(err) => {
+      console.log(err.text);
+    })
+  }
+
     return(
         <>
  <MDBFooter className='text-center fixed-bottom' color='white' bgColor='dark'>
@@ -42,22 +58,23 @@ const Footer = () =>{
             <MDBIcon fab icon='linkedin-in' />
           </a>
 
-          <a className='btn btn-outline-light btn-floating m-1' href='#!' role='button'>
+          <a className='btn btn-outline-light btn-floating m-1' href='https://github.com/Usantiago1' role='button'>
             <MDBIcon fab icon='github' />
           </a>
         </section>
 
         <section className=''>
-          <form action=''>
+          <form ref={form} onSubmit={sendEmail}>
             <div className='row d-flex justify-content-center'>
               <div className='col-auto'>
                 <p className='pt-2'>
-                  <strong>Sign up for our newsletter</strong>
+                  <strong>Suscríbete a nuestro newsletter</strong>
                 </p>
               </div>
 
               <MDBCol md='5' start='12'>
-                <MDBInput contrast type='email' label='Email address' className='mb-4' />
+                <MDBInput name="form_name" type='email' label='Email address' className='mb-4' />
+                <Button type="submit" className='btn btn-primary'>dd</Button>
               </MDBCol>
 
               <div className='col-auto'>
@@ -79,9 +96,9 @@ const Footer = () =>{
       </MDBContainer>
 
       <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-        © 2020 Copyright:
+        © 2022 Copyright:
         <a className='text-white' href='https://mdbootstrap.com/'>
-          MDBootstrap.com
+         github.com/Usantiago1
         </a>
       </div>
     </MDBFooter>
