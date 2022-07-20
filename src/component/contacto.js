@@ -112,7 +112,7 @@ const Contacto = () => {
                                     {getFormErrorMessage('asunto')}
                                 </div>
                             </div>
-                        <Button  label="Enviar" className="p-button-raised p-button-success mb-3 " />
+                        <Button  label="Enviar" className="btn btn-primary mb-2"/>
 
 
 
