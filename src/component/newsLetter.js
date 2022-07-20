@@ -1,25 +1,30 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
+import {ConfirmPopup} from "primereact/confirmpopup";
+import {Toast} from "primereact/toast";
 import { InputText } from "primereact/inputtext";
 import { classNames } from 'primereact/utils';
 import Footer from "./footer";
 import emailjs from "@emailjs/browser";
 import { Controller, useForm } from "react-hook-form";
-
-
-
-
+import swal from "sweetalert";
 
 
 const NewsLetter = () => {
 
     const [formData, setFormData] = useState({});
+    const [correo, setCorreo] = useState();
+    const [visible, setVisible] = useState(false);
     const er = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const message = "El correo no es valido"
     const form = useRef();
 
+
+
+
     const onSubmit = (data) => {
+        alertSend();
         sendEmail();
         setFormData(data);
         reset();
@@ -27,7 +32,17 @@ const NewsLetter = () => {
     }
 
     const defaultValues = {
-        form_name: ''
+        form_name:''
+    }
+
+
+        const alertSend = () => {
+        swal({
+            title: "NewsLetter",
+            text: `Te has registrado correctamente`,
+            icon: "success",
+            button: "OK"
+        });
     }
 
     const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
@@ -56,7 +71,7 @@ const NewsLetter = () => {
                     <div className="card-header">
                         <h1 className="text-center fst-italic">NewsLetter</h1>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className='p-fluid'>
+                    <form ref={form} onSubmit={handleSubmit(onSubmit)} className='p-fluid'>
                         <div className="col-md-60">
                             <div className="field mb-4 mt-5">
                                 <span className="p-float-label">
