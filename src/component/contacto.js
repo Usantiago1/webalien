@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useForm, Controller } from 'react-hook-form';
+
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea} from 'primereact/inputtextarea'
-import { Password } from "primereact/password";
-import { useForm, Controller } from 'react-hook-form';
 import { classNames } from 'primereact/utils';
-import { Calendar } from 'primereact/calendar'
 import { Dialog } from 'primereact/dialog';
-import { Divider } from 'primereact/divider';
 
 
 import Footer from "./footer";
@@ -26,6 +23,7 @@ const Contacto = () => {
         asunto: '',
         nombre: '',
         correo: '',
+        numero: '',
 
     }
 
@@ -42,19 +40,7 @@ const Contacto = () => {
     };
 
     const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
-    const passwordHeader = <h6>Elige una contraseña</h6>;
-    const passwordFooter = (
-        <React.Fragment>
-            <Divider />
-            <p className="mt-2">Sugerencias</p>
-            <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: '1.5' }}>
-                <li>Al menos una minúscula</li>
-                <li>Al menos una mayúscula</li>
-                <li>Al menos un número</li>
-                <li>Mínimo 8 caracteres</li>
-            </ul>
-        </React.Fragment>
-    );
+   
 
 
     return (
@@ -77,7 +63,7 @@ const Contacto = () => {
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                                 <div className="field mb-3 mt-4">
                                     <span className="p-float-label">
                                         <Controller name="nombre" control={control} rules={{ required: 'El nombre es requerido.' }} render={({ field, fieldState }) => (
@@ -89,7 +75,7 @@ const Contacto = () => {
                                 </div>
                             </div>
 
-                            <div className="col-md-6">
+                            <div className="col-md-4">
                                 <div className="field mb-3 mt-4">
                                     <span className="p-float-label">
                                         <Controller name="correo" control={control} rules={{ required: 'El Correo es requerido.', pattern: { value: er, message: message } }} render={({ field, fieldState }) => (
@@ -98,6 +84,18 @@ const Contacto = () => {
                                         <label htmlFor="correo" className={classNames({ ' p-error': !!errors.name })}>Correo*</label>
                                     </span>
                                     {getFormErrorMessage('correo')}
+                                </div>
+                            </div>
+
+                            <div className="col-md-4">
+                                <div className="field mb-3 mt-4">
+                                    <span className="p-float-label">
+                                        <Controller name="numero" control={control} rules={{ required: 'Este campo es requerido.' }} render={({ field, fieldState }) => (
+                                            <InputText keyfilter='num' maxLength='10' id={field.name} {...field} className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                        )} />
+                                        <label htmlFor="numero" className={classNames({ ' p-error': errors.numero})}>Numero telefonico*</label>
+                                    </span>
+                                    {getFormErrorMessage('numero')}
                                 </div>
                             </div>
 

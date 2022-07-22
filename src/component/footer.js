@@ -4,7 +4,6 @@ import React from "react";
 import {
   MDBFooter,
   MDBContainer,
-  MDBIcon,
 } from 'mdb-react-ui-kit';
 
 
@@ -14,46 +13,37 @@ const Footer = () => {
 
   return (
     <>
-      <MDBFooter className='text-center fixed-bottom' color='white' bgColor='dark'>
-        <MDBContainer className='p-4'>
-          <section className='mb-4'>
-            <a className='btn btn-outline-light btn-floating m-1' href='#!' role='button'>
-              <MDBIcon fab icon='facebook-f' />
-            </a>
+      <MDBFooter className='fixed-bottom' color='white' bgColor='dark'>
+        <MDBContainer className='p-1'>
+          <div>
+            <div className="row">
+              <h2 className='text-center mt-3'>AVISO DE PRIVACIDAD INTEGRAL</h2>
 
-            <a className='btn btn-outline-light btn-floating m-1' href='#!' role='button'>
-              <MDBIcon fab icon='google' />
-            </a>
+              <div className="col-5">
+                <h5>¿Para qué fines utilizaremos sus datos personales?</h5>
+                <p className="fw-light lh-1 text-start">Los datos personales que recabamos de usted, los utilizaremos para las siguientes finalidades que son
+                  necesarias para el servicio que solicita:
 
-            <a className='btn btn-outline-light btn-floating m-1' href='https://github.com/Usantiago1/webalien' role='button'>
-              <MDBIcon fab icon='github' />
-            </a>
-          </section>
-
-          <section className=''>
-            <form >
-              <div className='row d-flex justify-content-center'>
-                <div className='col-auto'>
-                  <p className='pt-2'>
-                    <strong >Suscríbete a nuestro newsletter</strong>
-                  </p>
-                </div>
-
-
-                <div className='col-auto'>
-
-                </div>
+                  Respuesta a mensajes del formulario de contacto, Prestación de cualquier servicio solicitado
+                  Con la finalidad de recabar datos de información al realizar nuestro aviso de privacidad.</p>
               </div>
-            </form>
-          </section>
-        </MDBContainer>
 
+              <div className="col-6">
+                <h5>¿Qué datos personales utilizaremos para estos fines?</h5>
+                <p className="fw-light lh-1 text-start">Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes
+                  datos personales:
+                  Datos de identificación y contacto, Datos laborales, Datos patrimoniales y/o financieros, Datos sobre
+                  pasatiempos</p>
+              </div>
+            </div>
+          </div>
+        </MDBContainer>
         <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-          © 2022 :
           <a className='text-white' href='https://github.com/Usantiago1/webalien'>
-            github.com/Usantiago1
+            <small>&copy; 2022 <b>UPT</b> - Todos los Derechos Reservados. | Ultima actualización de este aviso de privacidad 27/07/22</small>
           </a>
         </div>
+
       </MDBFooter>
 
     </>

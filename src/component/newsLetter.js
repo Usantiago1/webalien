@@ -1,26 +1,25 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+
+
 import { Button } from "primereact/button";
-import {ConfirmPopup} from "primereact/confirmpopup";
-import {Toast} from "primereact/toast";
 import { InputText } from "primereact/inputtext";
 import { classNames } from 'primereact/utils';
+
 import Footer from "./footer";
+
 import emailjs from "@emailjs/browser";
-import { Controller, useForm } from "react-hook-form";
 import swal from "sweetalert";
 
 
 const NewsLetter = () => {
 
     const [formData, setFormData] = useState({});
-    const [correo, setCorreo] = useState();
-    const [visible, setVisible] = useState(false);
+
     const er = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const message = "El correo no es valido"
+
     const form = useRef();
-
-
 
 
     const onSubmit = (data) => {
@@ -28,32 +27,15 @@ const NewsLetter = () => {
         sendEmail();
         setFormData(data);
         reset();
-
     }
+
 
     const defaultValues = {
-        form_name:''
+        form_name: ''
     }
-
-
-        const alertSend = () => {
-        swal({
-            title: "NewsLetter",
-            text: `Te has registrado correctamente`,
-            icon: "success",
-            button: "OK"
-        });
-    }
-
-    const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
-
-    const getFormErrorMessage = (name) => {
-        return errors[name] && <small className="p-error">{errors[name].message}</small>
-    };
 
     const sendEmail = () => {
         //e.preventDefault();
-
         emailjs.sendForm('service_p75gfbr', 'template_22q4sui', form.current, 'jC5_W8QPWemHmQMrQ')
             .then((result) => {
                 console.log(result.text);
@@ -63,6 +45,20 @@ const NewsLetter = () => {
     }
 
 
+    const alertSend = () => {
+        swal({
+            title: "NewsLetter",
+            text: `Te has registrado correctamente`,
+            icon: "success",
+            button: "OK"
+        });
+    }
+    
+    const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
+
+    const getFormErrorMessage = (name) => {
+        return errors[name] && <small className="p-error">{errors[name].message}</small>
+    };
 
     return (
         <>
@@ -83,11 +79,11 @@ const NewsLetter = () => {
                                 {getFormErrorMessage('form_name')}
                             </div>
                         </div>
-                         <Button className='btn btn-primary mb-2'>Suscribirse</Button>
+                        <Button className='btn btn-primary mb-2'>Suscribirse</Button>
                     </form>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }
