@@ -130,12 +130,12 @@ const Inicio = () => {
             <div className="dataview-demo">
                 <div className="card">
                     <DataView value={products} layout={layout} header={header}
-                        itemTemplate={itemTemplate} paginator rows={9}
+                        itemTemplate={renderListItem} paginator rows={9}
                         sortOrder={sortOrder} sortField={sortField} />
                 </div>
             </div>
 
-            <Footer/>
+        
         </>
 
     );

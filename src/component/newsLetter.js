@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef} from "react";
 import { Controller, useForm } from "react-hook-form";
 
 
@@ -16,6 +16,7 @@ const NewsLetter = () => {
 
     const [formData, setFormData] = useState({});
 
+
     const er = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const message = "El correo no es valido"
 
@@ -23,7 +24,6 @@ const NewsLetter = () => {
 
 
     const onSubmit = (data) => {
-        alertSend();
         sendEmail();
         setFormData(data);
         reset();
@@ -38,22 +38,24 @@ const NewsLetter = () => {
         //e.preventDefault();
         emailjs.sendForm('service_p75gfbr', 'template_22q4sui', form.current, 'jC5_W8QPWemHmQMrQ')
             .then((result) => {
-                console.log(result.text);
+                alertSend('NewsLetter', 'Registro Enviado', 'success', 'Ok')
+                //console.log(result.text);
             }, (err) => {
-                console.log(err.text);
+                alertSend('NewsLetter', "Registro no Enviado", 'error', 'Ok');
+                //console.log(err.text);
             })
     }
 
 
-    const alertSend = () => {
+    const alertSend = (pTitle,pText,pIcon,pButton) => {
         swal({
-            title: "NewsLetter",
-            text: `Te has registrado correctamente`,
-            icon: "success",
-            button: "OK"
+            title: pTitle,
+            text: pText,
+            icon: pIcon,
+            button: pButton
         });
     }
-    
+
     const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
 
     const getFormErrorMessage = (name) => {
@@ -83,7 +85,6 @@ const NewsLetter = () => {
                     </form>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }
